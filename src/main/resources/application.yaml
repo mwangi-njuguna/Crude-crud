@@ -1,0 +1,24 @@
+#this is for local development only, if you need to set-up in a prod env consider setting env variables instead of hardcoding sensitive info
+spring:
+  devtools:
+    livereload:
+      port: 9995
+      restart: true
+    add-properties: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springboot-crud
+    username: antony.njuguna
+    password:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        #postgresql issue -> @link(https://github.com/pgjdbc/pgjdbc/issues/1102)
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    #Consider changing ddl-auto property to validate if running on production
+    hibernate:
+      ddl-auto: update
+server:
+  port: 5009
